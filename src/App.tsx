@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Main from './pages/Main';
+import Main from './pages/Main/Main';
+import Grid from './pages/Grid/Grid';
 import './App.css';
 
 const App = () => {
@@ -10,6 +10,9 @@ const App = () => {
       <Switch>
         <Route path='/' exact>
           <Main />
+        </Route>
+        <Route path='/Grid' exact>
+          <Grid />
         </Route>
       </Switch>
     </BrowserRouter>

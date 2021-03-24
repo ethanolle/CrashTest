@@ -2,3 +2,13 @@
   display: flex;
   justify-content: center;
 }
+.homeButton{
+  opacity: 20%;
+  transition: 0.5s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.homeButton:hover{
+  opacity: 100%;
+}

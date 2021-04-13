@@ -4,6 +4,7 @@ import Main from './pages/Main/Main';
 import Grid from './pages/Grid/Grid';
 import Header from './pages/Header/Header';
 import Responsive from './pages/Responsive/Responsive';
+import Hamburger from './pages/Hamburger/Hamburger';
 import './App.css';
 
 const App = () => {
@@ -20,6 +21,9 @@ const App = () => {
         </Route>
         <Route path='/Responsive' exact>
           <Responsive />
+        </Route>
+        <Route path='/Hamburger' exact>
+          <Hamburger />
         </Route>
         <Redirect to='/' />
       </Switch>

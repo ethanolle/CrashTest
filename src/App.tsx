@@ -5,13 +5,13 @@ import Grid from './pages/Grid/Grid';
 import Header from './pages/Header/Header';
 import Responsive from './pages/Responsive/Responsive';
 import Hamburger from './pages/Hamburger/Hamburger';
+import Pomodoro from './pages/Pomodoro/Pomodoro';
 import './App.css';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header />
-      <hr />
       <Switch>
         <Route path='/' exact>
           <Main />
@@ -24,6 +24,9 @@ const App = () => {
         </Route>
         <Route path='/Hamburger' exact>
           <Hamburger />
+        </Route>
+        <Route path='/Pomodoro' exact>
+          <Pomodoro />
         </Route>
         <Redirect to='/' />
       </Switch>

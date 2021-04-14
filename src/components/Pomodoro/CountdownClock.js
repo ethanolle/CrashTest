@@ -1,4 +1,4 @@
-import './CountDownClock.css';
+import './CountDownClock.scss';
 // import { useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
 
@@ -16,7 +16,11 @@ const CountDownClock = () => {
             <div>{Math.floor(props.total / 60000)}</div>
           )}
         />
-        <button></button>
+      </div>
+      <div className='buttonContainer'>
+        <a href='https://twitter.com/Dave_Conner' class='btn btn-5'>
+          Hover
+        </a>
       </div>
     </div>
   );

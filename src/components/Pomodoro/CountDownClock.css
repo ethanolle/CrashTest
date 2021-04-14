@@ -1,3 +1,14 @@
 h1,h2,h3,h4{
     margin: 0px;
 }
+
+.counterContainer{
+    margin: 0;
+    font-size: clamp(50px,5vw,70px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat', sans-serif;
+}

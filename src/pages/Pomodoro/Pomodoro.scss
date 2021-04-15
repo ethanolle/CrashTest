@@ -1,17 +1,15 @@
-.pomodoroContainer{
-    background: #d15249;
-    height: 100vh;
-}
-
 $red: #E1332D;
 $white: #fff;
 
-
-h1,h2,h3,h4{
-    margin: 0px;
+.pomodoroContainer{
+  background: #d15249;
+  height: 100vh;
 }
+
+
 .containerCounter{
   position: absolute;
+  text-align: center;
   top: 50%;
   left: 50%;
   margin-right: -50%;
@@ -21,28 +19,7 @@ h1,h2,h3,h4{
     font-size: clamp(50px,5vw,70px);
     font-family: 'Montserrat', sans-serif;
 }
-.buttonContainer{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center; 
-  
-  @media (min-width: 600px) {
-      flex-direction: row;
-      justify-content: space-between;
-  }
-}
 
-// Main wrap
-.buttons {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
 
 //default button
 .btn {
@@ -64,8 +41,6 @@ h1,h2,h3,h4{
   &:hover { text-decoration: none; }
   
 }
-
-
 
 /////////////////////////////
 //button-5 

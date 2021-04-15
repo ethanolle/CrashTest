@@ -1,12 +1,21 @@
 import './Pomodoro.scss';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Countdown from 'react-countdown';
 
 const Pomodoro = () => {
   const [start, setStart] = useState(false);
+  const ref = useRef();
+  const handleStart = (e: any) => {
+    ref.current?.start();
+  };
 
+  const handlePause = (e: any) => {
+    ref.current?.pause();
+  };
   const handler = () => {
     setStart(true);
+    // start();
+    console.log('test');
   };
   return (
     <div className='pomodoroContainer'>

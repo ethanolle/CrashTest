@@ -1,42 +1,74 @@
 import './Pomodoro.scss';
 import { useState, useRef } from 'react';
 import Countdown from 'react-countdown';
+import ResetButton from '../../components/Pomodoro/ResetButton';
 
 const Pomodoro = () => {
-  const [start, setStart] = useState(false);
+  const [time, setTime] = useState(Date.now());
+  const [completed, setCompleted] = useState(false);
   const ref = useRef();
-  const handleStart = (e: any) => {
+
+  function ResetButton(props) {
+    return (
+      <a className='btn btn-5' onClick={handleReset}>
+        Reset
+      </a>
+    );
+  }
+
+  function StartButton(props) {
+    return (
+      <a className='btn btn-5' onClick={handleStart}>
+        start
+      </a>
+    );
+  }
+
+  function CompletedButtons(props) {
+    const isCompleted = props.isCompleted;
+    if (isCompleted) {
+      return <ResetButton />;
+    }
+    return <StartButton />;
+  }
+
+  const handleStart = (e) => {
     ref.current?.start();
+    console.log('start');
   };
 
-  const handlePause = (e: any) => {
-    ref.current?.pause();
+  const handleReset = () => {
+    setTime(Date.now());
+    console.log('reset');
   };
-  const handler = () => {
-    setStart(true);
-    // start();
-    console.log('test');
-  };
+
   return (
     <div className='pomodoroContainer'>
       <div className='containerCounter'>
         <div className='counterContainer'>
           <Countdown
-            className='counterNum'
-            date={Date.now() + 1500001}
-            intervalDelay={0}
-            precision={3}
-            autoStart={start}
-            renderer={(props) => (
-              // <div>{props.total}</div> To Put it in ms
-              <div>{Math.floor(props.total / 60000)}</div>
-            )}
+            date={time + 3000}
+            ref={ref}
+            autoStart={false}
+            renderer={({ hours, minutes, seconds, completed }) => {
+              if (completed) {
+                // Render a completed state
+                setCompleted(true);
+                return <div>You did it!</div>;
+              } else {
+                setCompleted(false);
+                // Render a countdown
+                return (
+                  <h1 className='m-0 font-weight-bold'>
+                    {minutes}:{seconds}
+                  </h1>
+                );
+              }
+            }}
           />
         </div>
         <div className='buttonContainer'>
-          <a onClick={() => handler()} className='btn btn-5'>
-            Start
-          </a>
+          <CompletedButtons isCompleted={completed} />,
         </div>
       </div>
     </div>

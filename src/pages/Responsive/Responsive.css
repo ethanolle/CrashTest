@@ -1,0 +1,27 @@
+.textResponsive{
+    text-align: center;
+}
+body{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1{
+    font-size: clamp(25px,4vw,50px);
+}
+
+p{
+    
+    font-size: clamp(13px,2vw,30px);
+    margin: 2em;
+    color: gray;
+}
+
+.ResponsiveContainer{
+    margin-bottom: 2em;
+}
+.backgroundVideo{
+    display: block;
+    margin: 0 auto;
+    width: 98%;
+    border-radius: 5vmin;
+}

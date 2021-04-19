@@ -1,4 +1,4 @@
-button {
+.button {
   -webkit-appearance: button;
   -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
@@ -24,7 +24,9 @@ button {
   height: 5rem;
   margin: 1em;
   font-size: 1rem;
+  border-radius: 5vmin;
 }
+.button:focus { outline: none; }
 .buttonContainer{
   display: flex;
   justify-content: center;

@@ -1,12 +1,24 @@
-import './Pomodoro.scss';
-import { useState, useRef } from 'react';
-import Countdown from 'react-countdown';
-import ResetButton from '../../components/Pomodoro/ResetButton';
+import "./Pomodoro.scss";
+import { useState, useRef } from "react";
+import Countdown from "react-countdown";
+import ResetButton from "../../components/Pomodoro/ResetButton";
 
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
   const [completed, setCompleted] = useState(false);
   const ref = useRef();
+
+  function CounterText(props) {
+    if (props.completed) {
+      // Render a completed state
+      setCompleted(true);
+      return <div>You did it!</div>;
+    } else {
+      setCompleted(false);
+      // Render a countdown
+      return <h1 className='m-0 font-weight-bold'>Test</h1>;
+    }
+  }
 
   function ResetButton(props) {
     return (
@@ -34,17 +46,17 @@ const Pomodoro = () => {
 
   const handleStart = (e) => {
     ref.current?.start();
-    console.log('start');
+    console.log("start");
   };
 
   const handleReset = () => {
     setTime(Date.now());
-    console.log('reset');
+    console.log("reset");
   };
 
   return (
-    <div className='pomodoroContainer'>
-      <div className='containerCounter'>
+    <div className='pageContainer'>
+      <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
             date={time + 3000}

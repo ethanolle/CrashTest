@@ -59,7 +59,7 @@ const Pomodoro = () => {
       <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
-            date={time + 3000}
+            date={time + 150000}
             ref={ref}
             autoStart={false}
             renderer={({ hours, minutes, seconds, completed }) => {

@@ -2,7 +2,7 @@ import './Main.css';
 import { Link } from 'react-router-dom';
 
 const Main = () => {
-  const pages: Array<string> = ['Grid', 'Responsive', 'Hamburger', 'Pomodoro'];
+  const pages: Array<string> = ['Grid', 'Responsive', 'Hamburger', 'Pomodoro',"PassProps"];
   return (
     <div className='buttonContainer'>
       {pages.map((i) => {

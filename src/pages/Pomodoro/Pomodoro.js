@@ -1,10 +1,12 @@
 import "./Pomodoro.scss";
 import { useState, useRef } from "react";
 import Countdown from "react-countdown";
+import Test from "../../components/Pomodoro/Test";
 
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
   const [completed, setCompleted] = useState(false);
+  const [test, setTest] = useState("Ethan");
   const ref = useRef();
   let clickIn = new Audio("/sounds/clickIn.mp3");
   let clickOut = new Audio("/sounds/clickOut.mp3");
@@ -74,6 +76,8 @@ const Pomodoro = () => {
         <div className='buttonContainer'>
           <CompletedButtons isCompleted={completed} />,
         </div>
+        <Test changeState={(test) => setTest(test)} />
+        <h1>{test}</h1>
       </div>
     </div>
   );

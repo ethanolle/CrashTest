@@ -2,7 +2,12 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background: chartreuse;
+  background: rgb(96, 129, 63);
   width: 300px;
   height: 300px;
+  border-radius: 5vmin;
+}
+
+button {
+  border-radius: 5vmin;
 }

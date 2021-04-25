@@ -1,11 +1,12 @@
 import "./ChildComp.css";
+import react from "react";
 
-const ChildComp = (props) => {
+const ChildComp = ({ changeState }) => {
   return (
     <div className='childContainer'>
       <h3>ChildComp</h3>
-      <button onClick={() => props.changeState("Changed2")}>TheChanger</button>
-      <button onClick={() => props.changeState("Changed1")}>TheChanger2</button>
+      <button onClick={() => changeState("Click")}>Click</button>
+      <button onClick={() => changeState("Button")}>Button</button>
     </div>
   );
 };

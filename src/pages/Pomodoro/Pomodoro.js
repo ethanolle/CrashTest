@@ -76,8 +76,6 @@ const Pomodoro = () => {
         <div className='buttonContainer'>
           <CompletedButtons isCompleted={completed} />,
         </div>
-        <Test changeState={(test) => setTest(test)} />
-        <h1>{test}</h1>
       </div>
     </div>
   );

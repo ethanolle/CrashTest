@@ -8,6 +8,7 @@ let motivation = new Audio('/sounds/motivation.mp3');
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
   const [completed, setCompleted] = useState(false);
+  const [test, setTest] = useState('Ethan');
   const ref = useRef();
   useEffect(() => {
     if (completed) motivation.play();
@@ -46,6 +47,7 @@ const Pomodoro = () => {
   const handleReset = () => {
     clickOut.play();
     setTime(Date.now());
+    console.log('reset');
   };
 
   return (

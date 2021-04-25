@@ -6,6 +6,8 @@ import Header from './pages/Header/Header';
 import Responsive from './pages/Responsive/Responsive';
 import Hamburger from './pages/Hamburger/Hamburger';
 import Pomodoro from './pages/Pomodoro/Pomodoro';
+import PassProps from "./pages/PassProps/PassProps"
+import Destructuring from "./pages/Destructuring/Destructuring"
 import './App.css';
 
 const App = () => {
@@ -27,6 +29,12 @@ const App = () => {
         </Route>
         <Route path='/Pomodoro' exact>
           <Pomodoro />
+        </Route>
+        <Route path='/PassProps' exact>
+          <PassProps />
+        </Route>
+        <Route path='/Destructuring' exact>
+          <Destructuring/>
         </Route>
         <Redirect to='/' />
       </Switch>

@@ -1,0 +1,14 @@
+.PassPropsContainer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background: rgb(161, 82, 82);
+  width: 500px;
+  height: 500px;
+  border-radius: 5vmin;
+}
+
+.PassPropsContainer > h3 {
+  color: black;
+}

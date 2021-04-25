@@ -1,13 +1,17 @@
 import './Pomodoro.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Countdown from 'react-countdown';
+let clickIn = new Audio('/sounds/clickIn.mp3');
+let clickOut = new Audio('/sounds/clickOut.mp3');
+let motivation = new Audio('/sounds/motivation.mp3');
 
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
   const [completed, setCompleted] = useState(false);
   const ref = useRef();
-  let clickIn = new Audio('/sounds/clickIn.mp3');
-  let clickOut = new Audio('/sounds/clickOut.mp3');
+  useEffect(() => {
+    if (completed) motivation.play();
+  }, [completed]);
 
   function ResetButton(props) {
     return (
@@ -42,7 +46,6 @@ const Pomodoro = () => {
   const handleReset = () => {
     clickOut.play();
     setTime(Date.now());
-    console.log('reset');
   };
 
   return (
@@ -50,7 +53,7 @@ const Pomodoro = () => {
       <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
-            date={time + 1500}
+            date={time + 15000}
             ref={ref}
             autoStart={false}
             renderer={({ hours, minutes, seconds, completed }) => {
@@ -61,12 +64,7 @@ const Pomodoro = () => {
               } else {
                 setCompleted(false);
                 // Render a countdown
-                return (
-                  <h1 className='m-0 font-weight-bold'>
-                    {minutes}
-                    {/*:{seconds} */}
-                  </h1>
-                );
+                return <h1 className='m-0 font-weight-bold'>{minutes}</h1>;
               }
             }}
           />

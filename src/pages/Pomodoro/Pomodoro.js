@@ -1,17 +1,17 @@
-import './Pomodoro.scss';
-import { useState, useRef, useEffect } from 'react';
-import Countdown from 'react-countdown';
-let clickIn = new Audio('/sounds/clickIn.mp3');
-let clickOut = new Audio('/sounds/clickOut.mp3');
-let motivation = new Audio('/sounds/motivation.mp3');
+import "./Pomodoro.scss";
+import { useState, useRef, useEffect } from "react";
+import Countdown from "react-countdown";
+// let clickIn = new Audio("/sounds/clickIn.mp3");
+// let clickOut = new Audio("/sounds/clickOut.mp3");
+let motivation = new Audio("/sounds/motivation.mp3");
 
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
-  const [completed, setCompleted] = useState(false);
-  const [test, setTest] = useState('Ethan');
+  const [completed, setCompleted] = useState("false");
   const ref = useRef();
   useEffect(() => {
-    if (completed) motivation.play();
+    // if (completed) motivation.play();
+    // console.log(completed);
   }, [completed]);
 
   function ResetButton(props) {
@@ -30,24 +30,41 @@ const Pomodoro = () => {
     );
   }
 
-  function CompletedButtons(props) {
-    const isCompleted = props.isCompleted;
-    if (isCompleted) {
+  function Pause(props) {
+    return (
+      <a className='btn btn-5' onClick={handlePause}>
+        Pause
+      </a>
+    );
+  }
+
+  function CompletedButtons({ isCompleted }) {
+    console.log(isCompleted);
+    if (isCompleted == "true") {
       return <ResetButton />;
+    } else if (isCompleted == "start") {
+      console.log("Pause");
+      return <Pause />;
     }
     return <StartButton />;
   }
 
   const handleStart = (e) => {
-    clickIn.play();
+    // clickIn.play();
     ref.current?.start();
-    console.log('start');
+    setCompleted("start");
+  };
+
+  const handlePause = (e) => {
+    // clickIn.play();
+    ref.current?.pause();
+    setCompleted("pause");
   };
 
   const handleReset = () => {
-    clickOut.play();
+    // clickOut.play();
     setTime(Date.now());
-    console.log('reset');
+    setCompleted("false");
   };
 
   return (
@@ -55,18 +72,23 @@ const Pomodoro = () => {
       <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
-            date={time + 15000}
+            date={time + 1500}
             ref={ref}
             autoStart={false}
             renderer={({ hours, minutes, seconds, completed }) => {
               if (completed) {
                 // Render a completed state
-                setCompleted(true);
+                console.log(completed);
+                console.log("here");
+                setCompleted("true");
                 return <div>You did it!</div>;
               } else {
-                setCompleted(false);
                 // Render a countdown
-                return <h1 className='m-0 font-weight-bold'>{minutes}</h1>;
+                return (
+                  <h1 className='m-0 font-weight-bold'>
+                    {minutes},{seconds}
+                  </h1>
+                );
               }
             }}
           />

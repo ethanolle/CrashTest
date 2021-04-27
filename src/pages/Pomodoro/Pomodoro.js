@@ -7,20 +7,12 @@ let motivation = new Audio("/sounds/motivation.mp3");
 
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
-  const [completed, setCompleted] = useState("false");
+  const [status, setStatus] = useState("start");
   const ref = useRef();
   useEffect(() => {
-    // if (completed) motivation.play();
-    // console.log(completed);
-  }, [completed]);
-
-  function ResetButton(props) {
-    return (
-      <a className='btn btn-5' onClick={handleReset}>
-        Reset
-      </a>
-    );
-  }
+    // if (status) motivation.play();
+    console.log(status);
+  }, [status]);
 
   function StartButton(props) {
     return (
@@ -30,6 +22,26 @@ const Pomodoro = () => {
     );
   }
 
+  const handleStart = (e) => {
+    // clickIn.play();
+    ref.current?.start();
+    setStatus("inProgress");
+  };
+
+  function ResetButton(props) {
+    return (
+      <a className='btn btn-5' onClick={handleReset}>
+        Reset
+      </a>
+    );
+  }
+
+  const handleReset = () => {
+    // clickOut.play();
+    setTime(Date.now());
+    setStatus("start");
+  };
+
   function Pause(props) {
     return (
       <a className='btn btn-5' onClick={handlePause}>
@@ -38,35 +50,20 @@ const Pomodoro = () => {
     );
   }
 
-  function CompletedButtons({ isCompleted }) {
-    console.log(isCompleted);
-    if (isCompleted == "true") {
-      return <ResetButton />;
-    } else if (isCompleted == "start") {
-      console.log("Pause");
-      return <Pause />;
-    }
-    return <StartButton />;
-  }
-
-  const handleStart = (e) => {
-    // clickIn.play();
-    ref.current?.start();
-    setCompleted("start");
-  };
-
   const handlePause = (e) => {
     // clickIn.play();
     ref.current?.pause();
-    setCompleted("pause");
+    setStatus("pause");
   };
 
-  const handleReset = () => {
-    // clickOut.play();
-    setTime(Date.now());
-    setCompleted("false");
-  };
-
+  function CompletedButtons() {
+    if (status === "pause" || status === "start") {
+      return <StartButton />;
+    } else if (status == "inProgress") {
+      return <Pause />;
+    }
+    return <ResetButton />;
+  }
   return (
     <div className='pomodoroContainer'>
       <div className='pomodoroCounter'>
@@ -79,8 +76,6 @@ const Pomodoro = () => {
               if (completed) {
                 // Render a completed state
                 console.log(completed);
-                console.log("here");
-                setCompleted("true");
                 return <div>You did it!</div>;
               } else {
                 // Render a countdown
@@ -94,7 +89,10 @@ const Pomodoro = () => {
           />
         </div>
         <div className='buttonContainer'>
-          <CompletedButtons isCompleted={completed} />,
+          <StartButton />
+          <Pause />
+          <ResetButton />
+          <CompletedButtons />,
         </div>
       </div>
     </div>

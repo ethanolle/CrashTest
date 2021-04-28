@@ -1,14 +1,15 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Main from './pages/Main/Main';
-import Grid from './pages/Grid/Grid';
-import Header from './pages/Header/Header';
-import Responsive from './pages/Responsive/Responsive';
-import Hamburger from './pages/Hamburger/Hamburger';
-import Pomodoro from './pages/Pomodoro/Pomodoro';
-import PassProps from "./pages/PassProps/PassProps"
-import Destructuring from "./pages/Destructuring/Destructuring"
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Main from "./pages/Main/Main";
+import Grid from "./pages/Grid/Grid";
+import Header from "./pages/Header/Header";
+import Responsive from "./pages/Responsive/Responsive";
+import Hamburger from "./pages/Hamburger/Hamburger";
+import Pomodoro from "./pages/Pomodoro/Pomodoro";
+import PassProps from "./pages/PassProps/PassProps";
+import Destructuring from "./pages/Destructuring/Destructuring";
+import Counter from "./features/counter/Counter";
+import "./App.css";
 
 const App = () => {
   return (
@@ -34,7 +35,10 @@ const App = () => {
           <PassProps />
         </Route>
         <Route path='/Destructuring' exact>
-          <Destructuring/>
+          <Destructuring />
+        </Route>
+        <Route path='/Counter' exact>
+          <Counter />
         </Route>
         <Redirect to='/' />
       </Switch>

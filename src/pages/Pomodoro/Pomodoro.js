@@ -1,19 +1,43 @@
 import "./Pomodoro.scss";
 import { useState, useRef, useEffect } from "react";
 import Countdown from "react-countdown";
+// import StartButton from "./Start";
 // let clickIn = new Audio("/sounds/clickIn.mp3");
 // let clickOut = new Audio("/sounds/clickOut.mp3");
 let motivation = new Audio("/sounds/motivation.mp3");
 
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
-  const [status, setStatus] = useState("start");
+  const [buttonStatus, setButtonStatus] = useState("start");
+  const [counterStatus, setCounterStatus] = useState("");
   const ref = useRef();
-  useEffect(() => {
-    // if (status) motivation.play();
-    console.log(status);
-  }, [status]);
 
+  useEffect(() => {
+    if (counterStatus === true) {
+      setButtonStatus("reset");
+    }
+  }, [counterStatus]);
+
+  // Handling with Actions
+  const handleStart = (e) => {
+    // clickIn.play();
+    ref.current?.start();
+    setButtonStatus("inProgress");
+  };
+
+  const handleReset = () => {
+    // clickOut.play();
+    setTime(Date.now());
+    setButtonStatus("start");
+  };
+
+  const handlePause = (e) => {
+    // clickIn.play();
+    ref.current?.pause();
+    setButtonStatus("pause");
+  };
+
+  // Button Components
   function StartButton(props) {
     return (
       <a className='btn btn-5' onClick={handleStart}>
@@ -21,12 +45,6 @@ const Pomodoro = () => {
       </a>
     );
   }
-
-  const handleStart = (e) => {
-    // clickIn.play();
-    ref.current?.start();
-    setStatus("inProgress");
-  };
 
   function ResetButton(props) {
     return (
@@ -36,12 +54,6 @@ const Pomodoro = () => {
     );
   }
 
-  const handleReset = () => {
-    // clickOut.play();
-    setTime(Date.now());
-    setStatus("start");
-  };
-
   function Pause(props) {
     return (
       <a className='btn btn-5' onClick={handlePause}>
@@ -50,16 +62,12 @@ const Pomodoro = () => {
     );
   }
 
-  const handlePause = (e) => {
-    // clickIn.play();
-    ref.current?.pause();
-    setStatus("pause");
-  };
+  //Choosing the good button
 
   function CompletedButtons() {
-    if (status === "pause" || status === "start") {
+    if (buttonStatus === "pause" || buttonStatus === "start") {
       return <StartButton />;
-    } else if (status == "inProgress") {
+    } else if (buttonStatus === "inProgress") {
       return <Pause />;
     }
     return <ResetButton />;
@@ -69,19 +77,19 @@ const Pomodoro = () => {
       <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
-            date={time + 1500}
+            date={time + 2000}
             ref={ref}
             autoStart={false}
             renderer={({ hours, minutes, seconds, completed }) => {
+              setCounterStatus(completed);
               if (completed) {
                 // Render a completed state
-                console.log(completed);
                 return <div>You did it!</div>;
               } else {
                 // Render a countdown
                 return (
                   <h1 className='m-0 font-weight-bold'>
-                    {minutes},{seconds}
+                    {minutes}:{seconds}
                   </h1>
                 );
               }
@@ -89,10 +97,7 @@ const Pomodoro = () => {
           />
         </div>
         <div className='buttonContainer'>
-          <StartButton />
-          <Pause />
-          <ResetButton />
-          <CompletedButtons />,
+          <CompletedButtons />
         </div>
       </div>
     </div>

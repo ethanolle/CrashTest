@@ -1,15 +1,23 @@
-import './Main.css';
-import { Link } from 'react-router-dom';
+import "./Main.css";
+import { Link } from "react-router-dom";
 
 const Main = () => {
-  const pages: Array<string> = ['Grid', 'Responsive', 'Hamburger', 'Pomodoro',"PassProps","Destructuring"];
+  const pages: Array<string> = [
+    "Grid",
+    "Responsive",
+    "Hamburger",
+    "Pomodoro",
+    "PassProps",
+    "Destructuring",
+    "ReduxCounter",
+  ];
   return (
     <div className='buttonContainer'>
       {pages.map((i) => {
         return (
           <button className='button '>
             <Link
-              style={{ color: 'inherit', textDecoration: 'inherit' }}
+              style={{ color: "inherit", textDecoration: "inherit" }}
               to={i}
             >
               {i}

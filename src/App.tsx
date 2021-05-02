@@ -8,7 +8,7 @@ import Hamburger from "./pages/Hamburger/Hamburger";
 import Pomodoro from "./pages/Pomodoro/Pomodoro";
 import PassProps from "./pages/PassProps/PassProps";
 import Destructuring from "./pages/Destructuring/Destructuring";
-import Counter from "./features/counter/Counter";
+import ReduxCounter from "./features/counter/ReduxCounter";
 import "./App.css";
 
 const App = () => {
@@ -37,8 +37,8 @@ const App = () => {
         <Route path='/Destructuring' exact>
           <Destructuring />
         </Route>
-        <Route path='/Counter' exact>
-          <Counter />
+        <Route path='/ReduxCounter' exact>
+          <ReduxCounter />
         </Route>
         <Redirect to='/' />
       </Switch>

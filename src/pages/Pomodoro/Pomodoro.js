@@ -2,8 +2,7 @@ import "./Pomodoro.scss";
 import { useState, useRef, useEffect } from "react";
 import Countdown from "react-countdown";
 // import StartButton from "./Start";
-// let clickIn = new Audio("/sounds/clickIn.mp3");
-// let clickOut = new Audio("/sounds/clickOut.mp3");
+let clickIn = new Audio("/sounds/clickIn.mp3");
 let motivation = new Audio("/sounds/motivation.mp3");
 
 const Pomodoro = () => {
@@ -15,24 +14,25 @@ const Pomodoro = () => {
   useEffect(() => {
     if (counterStatus === true) {
       setButtonStatus("reset");
+      motivation.play();
     }
   }, [counterStatus]);
 
   // Handling with Actions
   const handleStart = (e) => {
-    // clickIn.play();
+    clickIn.play();
     ref.current?.start();
     setButtonStatus("inProgress");
   };
 
   const handleReset = () => {
-    // clickOut.play();
+    clickIn.play();
     setTime(Date.now());
     setButtonStatus("start");
   };
 
   const handlePause = (e) => {
-    // clickIn.play();
+    clickIn.play();
     ref.current?.pause();
     setButtonStatus("pause");
   };
@@ -77,7 +77,7 @@ const Pomodoro = () => {
       <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
-            date={time + 2000}
+            date={time + 1500000}
             ref={ref}
             autoStart={false}
             renderer={({ hours, minutes, seconds, completed }) => {

@@ -10,6 +10,7 @@ const Main = () => {
     "PassProps",
     "Destructuring",
     "ReduxCounter",
+    "UseStateComp",
   ];
   return (
     <div className='buttonContainer'>

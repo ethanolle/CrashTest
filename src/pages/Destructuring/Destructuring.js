@@ -1,4 +1,6 @@
 import "./Destructuring.css";
+import { useState } from "react";
+import { increment } from "../../features/counter/counterSlice";
 
 const Destructuring = () => {
   // Array Destructuring
@@ -28,15 +30,13 @@ const Destructuring = () => {
     address: { city },
   } = Ethan;
 
-  const { city: ville } = Ethan.address;
-
   return (
     <div className='DestructuringContainer'>
       <h1 className='exampleOfArray'>
         {sum},{multiply},{division}
       </h1>
       <h1 className='exampleOfObject'>
-        {prenom},{nom},{city},{ville}
+        {prenom},{nom},{city},
       </h1>
     </div>
   );

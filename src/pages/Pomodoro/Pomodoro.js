@@ -77,7 +77,7 @@ const Pomodoro = () => {
       <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
-            date={time + 1500000}
+            date={time + 1500}
             ref={ref}
             autoStart={false}
             renderer={({ hours, minutes, seconds, completed }) => {
@@ -87,11 +87,7 @@ const Pomodoro = () => {
                 return <div>You did it!</div>;
               } else {
                 // Render a countdown
-                return (
-                  <h1 className='m-0 font-weight-bold'>
-                    {minutes}:{seconds}
-                  </h1>
-                );
+                return <h1 className='m-0 font-weight-bold'>{minutes}</h1>;
               }
             }}
           />

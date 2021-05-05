@@ -9,6 +9,7 @@ import Pomodoro from "./pages/Pomodoro/Pomodoro";
 import PassProps from "./pages/PassProps/PassProps";
 import Destructuring from "./pages/Destructuring/Destructuring";
 import ReduxCounter from "./features/counter/ReduxCounter";
+import UseStateComp from "./pages/UseStateVideo/UseStateComp";
 import "./App.css";
 
 const App = () => {
@@ -39,6 +40,9 @@ const App = () => {
         </Route>
         <Route path='/ReduxCounter' exact>
           <ReduxCounter />
+        </Route>
+        <Route path='/UseStateComp' exact>
+          <UseStateComp />
         </Route>
         <Redirect to='/' />
       </Switch>

@@ -1,19 +1,19 @@
-import "./Pomodoro.scss";
-import { useState, useRef, useEffect } from "react";
-import Countdown from "react-countdown";
+import './Pomodoro.scss';
+import { useState, useRef, useEffect } from 'react';
+import Countdown from 'react-countdown';
 // import StartButton from "./Start";
-let clickIn = new Audio("/sounds/clickIn.mp3");
-let motivation = new Audio("/sounds/motivation.mp3");
+let clickIn = new Audio('/sounds/clickIn.mp3');
+let motivation = new Audio('/sounds/motivation.mp3');
 
 const Pomodoro = () => {
   const [time, setTime] = useState(Date.now());
-  const [buttonStatus, setButtonStatus] = useState("start");
-  const [counterStatus, setCounterStatus] = useState("");
+  const [buttonStatus, setButtonStatus] = useState('start');
+  const [counterStatus, setCounterStatus] = useState('');
   const ref = useRef();
 
   useEffect(() => {
     if (counterStatus === true) {
-      setButtonStatus("reset");
+      setButtonStatus('reset');
       motivation.play();
     }
   }, [counterStatus]);
@@ -22,19 +22,19 @@ const Pomodoro = () => {
   const handleStart = (e) => {
     clickIn.play();
     ref.current?.start();
-    setButtonStatus("inProgress");
+    setButtonStatus('inProgress');
   };
 
   const handleReset = () => {
     clickIn.play();
     setTime(Date.now());
-    setButtonStatus("start");
+    setButtonStatus('start');
   };
 
   const handlePause = (e) => {
     clickIn.play();
     ref.current?.pause();
-    setButtonStatus("pause");
+    setButtonStatus('pause');
   };
 
   // Button Components
@@ -65,9 +65,9 @@ const Pomodoro = () => {
   //Choosing the good button
 
   function CompletedButtons() {
-    if (buttonStatus === "pause" || buttonStatus === "start") {
+    if (buttonStatus === 'pause' || buttonStatus === 'start') {
       return <StartButton />;
-    } else if (buttonStatus === "inProgress") {
+    } else if (buttonStatus === 'inProgress') {
       return <Pause />;
     }
     return <ResetButton />;
@@ -77,7 +77,7 @@ const Pomodoro = () => {
       <div className='pomodoroCounter'>
         <div className='counterContainer'>
           <Countdown
-            date={time + 1500}
+            date={time + 1500000}
             ref={ref}
             autoStart={false}
             renderer={({ hours, minutes, seconds, completed }) => {
